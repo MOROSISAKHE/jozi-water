@@ -7,12 +7,13 @@ import {
   Tooltip,
   CartesianGrid,
   ResponsiveContainer,
+  Label
 } from 'recharts';
 
 const UsageCharts = ({ data }) => {
   console.log("Chart Data:", data); 
 
-  
+
   const cleanedData = data.map((entry, index) => ({
     ...entry,
     usage: parseInt(entry.usage) || 0,
@@ -27,8 +28,12 @@ const UsageCharts = ({ data }) => {
         <ResponsiveContainer width="100%" height="100%">
           <BarChart data={cleanedData}>
             <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="date" />
-            <YAxis />
+            <XAxis dataKey="date">
+              <Label value="Date" offset={-5} position="insideBottom" />
+            </XAxis>
+            <YAxis>
+              <Label value="Litres Used" angle={-90} position="insideLeft" style={{ textAnchor: 'middle' }} />
+            </YAxis>
             <Tooltip />
             <Bar dataKey="usage" fill="#4CAF50" />
           </BarChart>

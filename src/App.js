@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 import UsageCharts from './UsageCharts';
+import UsageByCategoryPie from './UsageByCategoryPie';
 
 const categories = ['Cooking', 'Cleaning', 'Gardening', 'Drinking', 'Other'];
 
@@ -156,6 +157,9 @@ function App() {
           )}
           <h3 style={{ marginTop: '1em' }}>Usage Chart</h3>
              <UsageCharts data={usageLog} />
+        </div>
+        <div className="card">
+          <UsageByCategoryPie usageLog={usageLog} categories={categories} />
         </div>
 
         <div className="card">
